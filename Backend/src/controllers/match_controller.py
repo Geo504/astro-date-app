@@ -14,8 +14,8 @@ def get_match(user):
     dislike_list = [User.id for User in user_db.dislikes_to]
     like_list = [User.id for User in user_db.likes_to]
     query = db.select(User).filter(
-            User.id != user_db.id, 
-            User.id.not_in(dislike_list), 
+            User.id != user_db.id,
+            User.id.not_in(dislike_list),
             User.id.not_in(like_list)
         )
 
@@ -33,4 +33,4 @@ def get_match(user):
             )
         posible_match["profile"]["age"]=diference.years
 
-        return jsonify(posible_match), 200
+        return posible_match

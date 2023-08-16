@@ -1,4 +1,4 @@
-export const updateLikes = (token, likeId) => {
+export const updateLikes = (token, likeId, updateTokenFuntion, updateMatch) => {
   return(
     fetch(`${process.env.REACT_APP_API_URL}/api/users/update-likes`, {
       method: "PUT",
@@ -13,6 +13,11 @@ export const updateLikes = (token, likeId) => {
         alert("There has been an error, please try again");
       }
       else return resp.json();
+    })
+    .then(body => {
+      updateTokenFuntion(body.refresh_token);
+      updateMatch(body.posible_match);
+      return true;
     })
     .catch((error) => {
       console.log("Error:" + error);
