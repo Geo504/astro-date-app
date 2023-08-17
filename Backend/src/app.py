@@ -41,7 +41,7 @@ migrate = Migrate(app, db)
 
 app.register_blueprint(api)
 
-
+print(static_file_dir)
 
 @app.route('/')
 @app.route('/<path:path>', methods=['GET'])
