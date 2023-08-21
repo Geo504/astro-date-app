@@ -13,7 +13,8 @@ from routes.api import api
 
 
 
-static_file_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), '..', '..', 'Frontend', 'build')
+# static_file_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), '..', '..', 'Frontend', 'build')
+static_file_dir = os.path.join(os.getcwd(), '..', 'frontend', 'build')
 
 app = Flask(__name__) #, static_folder=static_file_dir
 CORS(app)
@@ -40,7 +41,7 @@ migrate = Migrate(app, db)
 
 app.register_blueprint(api)
 
-
+print(static_file_dir)
 
 # @app.route('/')
 # @app.route('/<path:path>', methods=['GET'])
